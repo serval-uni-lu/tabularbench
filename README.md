@@ -21,7 +21,7 @@ TabularBench: Adversarial robustness benchmark for tabular data
     ```
 
 Note: The `./tasks/run_benchmark.sh` script mounts the current directory to the `/workspace` directory in the Docker container.
-This allows you to edit the code on your host machine and run the code in the Docker container.
+This allows you to edit the code on your host machine and run the code in the Docker container without rebuilding.
 
 ### With Pyenv and Poetry
 
@@ -59,6 +59,24 @@ This allows you to edit the code on your host machine and run the code in the Do
 
 ## How to use
 
+### Run the benchmark
+
+You can run the benchmark with the following command:
+
+```bash
+python -m tasks.run_benchmark
+```
+
+or with Docker:
+
+```bash
+docker_run_benchmark
+```
+
+### Using the API
+
+You can also use the API to run the benchmark. See `tasks/run_benchmark.py` for an example.
+
 ```python
 clean_acc, robust_acc = benchmark(
     dataset="URL",
@@ -67,3 +85,19 @@ clean_acc, robust_acc = benchmark(
     constraints=True,
 )
 ```
+
+### Retrain the models
+
+We provide the models and parameters used in the paper.
+You can retrain the models with the following command:
+
+```bash
+python -m tasks.train_model
+```
+
+Edit the `tasks/train_model.py` file to change the model, dataset, and training method.
+
+## Naming
+
+For technical reasons the name of datasets, models, and training methods are different from the paper.
+The mapping can be found in [doc/naming.md](doc/naming.md).
