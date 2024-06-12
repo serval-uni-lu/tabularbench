@@ -104,4 +104,4 @@ Edit the `tasks/train_model.py` file to change the model, dataset, and training 
 ## Naming
 
 For technical reasons the name of datasets, models, and training methods are different from the paper.
-The mapping can be found in [doc/naming.md](doc/naming.md).
+The mapping can be found in [docs/naming.md](docs/naming.md).
