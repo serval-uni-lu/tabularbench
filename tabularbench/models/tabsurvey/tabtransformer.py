@@ -118,8 +118,6 @@ class TabTransformer(BaseModelTorch):
         self.dropout = dropout
         self.weight_decay = weight_decay
 
-        print("ANSWER")
-        print(scaler.one_hot_encode)
         if scaler is not None:
             self.scaler = TabScaler(num_scaler="min_max", one_hot_encode=False)
             self.scaler.fit_scaler_data(scaler.get_scaler_data())

@@ -24,6 +24,10 @@ from tabularbench.utils.typing import NDFloat, NDNumber
 """
 
 
+def get_random_groups(n_data, n_groups):
+    return torch.randint(low=0, high=max(1, n_groups), size=(n_data,))
+
+
 class TORCHRLN(BaseModelTorch):
     def __init__(
         self,
@@ -207,21 +211,6 @@ class TORCHRLN(BaseModelTorch):
         #     x, y, True, self.batch_size
         # )
 
-        if self.dg_group_method == "random":
-            groups = get_random_groups(len(x), self.num_groups)
-            groups_val = get_random_groups(len(x_val), self.num_groups)
-        elif self.dg_group_method == "time":
-            groups = (
-                torch.tensor(np.arange(self.num_groups))
-                .int()
-                .repeat(len(x) // self.num_groups + 1)[: len(x)]
-            )
-            groups_val = (
-                torch.tensor(np.arange(self.num_groups))
-                .int()
-                .repeat(len(x_val) // self.num_groups + 1)[: len(x_val)]
-            )
-
         if custom_train_dataloader:
             if hasattr(custom_train_dataloader, "dataset"):
                 custom_train_dataloader.dataset.tensors = x.to(
@@ -237,7 +226,6 @@ class TORCHRLN(BaseModelTorch):
             train_loader = FastTensorDataLoader(
                 x.to(self.device),
                 y.to(self.device),
-                groups.to(self.device),
                 batch_size=self.batch_size,
                 shuffle=True,
             )
@@ -251,7 +239,6 @@ class TORCHRLN(BaseModelTorch):
             val_loader = FastTensorDataLoader(
                 x_val.to(self.device),
                 y_val.to(self.device),
-                groups_val.to(self.device),
                 batch_size=self.val_batch_size,
                 shuffle=False,
             )
@@ -290,7 +277,6 @@ class TORCHRLN(BaseModelTorch):
                     for val_i, (
                         batch_val_x,
                         batch_val_y,
-                        batch_val_g,
                     ) in enumerate(val_loader):
                         out = self.model(batch_val_x.to(self.device))
 
@@ -302,7 +288,7 @@ class TORCHRLN(BaseModelTorch):
                         if callable(getattr(loss_func, "update", None)):
                             loss_func.update(batch_val_x, batch_val_y)
                         val_loss += loss_func(
-                            out, batch_val_y.to(self.device), g=batch_val_g
+                            out, batch_val_y.to(self.device)
                         ).item()
                         val_dim += 1
 

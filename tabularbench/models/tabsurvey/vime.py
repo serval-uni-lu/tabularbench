@@ -397,7 +397,7 @@ class VIME(BaseModelTorch):
         for epoch in range(self.epochs):
             print(f"Epoch {epoch}", flush=True)
 
-            for i, (batch_X, batch_y) in enumerate(train_loader):
+            for i, (batch_X, batch_y, *_) in enumerate(train_loader):
                 # print(f"Batch {i}.", flush=True)
                 i_relative_k = i % n_batch_per_precompute
                 if i_relative_k == 0:
