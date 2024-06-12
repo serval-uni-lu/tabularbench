@@ -2,7 +2,6 @@ import os
 import warnings
 from typing import Any
 
-import joblib
 import numpy as np
 import torch
 from joblib import Parallel, delayed
@@ -27,7 +26,6 @@ from tabularbench.attacks.moeva.history_callback import HistoryCallback
 from tabularbench.attacks.moeva.operators import InitialStateSampling
 from tabularbench.attacks.utils import cut_in_batch
 from tabularbench.constraints.constraints import Constraints
-from tabularbench.models.tabsurvey.vime import VIME
 from tabularbench.utils.datatypes import to_numpy_number, to_torch_number
 
 from .adversarial_problem import NB_OBJECTIVES, AdversarialProblem
