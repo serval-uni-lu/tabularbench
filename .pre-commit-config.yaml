@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v4.6.0
     hooks:
     -   id: trailing-whitespace
         exclude: ^doc/.*\.rst$
@@ -14,11 +14,11 @@ repos:
         exclude: ^doc/.*\.rst$
         args: ['--maxkb=10000']
 -   repo: https://github.com/pycqa/flake8
-    rev: 4.0.1
+    rev: 7.0.0
     hooks:
     -   id: flake8
 -   repo: https://github.com/psf/black
-    rev: 22.3.0
+    rev: 24.4.2
     hooks:
       - id: black
 #-   repo: https://github.com/pre-commit/mirrors-mypy
@@ -27,6 +27,6 @@ repos:
 #        - id: mypy
         #   additional_dependencies: [pydantic]  # add if use pydantic
 -   repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
+    rev: 5.13.2
     hooks:
     -   id: isort
