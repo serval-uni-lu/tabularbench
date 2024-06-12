@@ -13,7 +13,7 @@ from tabularbench.constraints.relation_constraint import (
     Feature,
 )
 from tabularbench.constraints.utils import get_feature_index
-from tabularbench.utils.training import to_numpy_number, to_torch_number
+from tabularbench.utils.datatypes import to_numpy_number, to_torch_number
 from tabularbench.utils.typing import NDNumber
 
 

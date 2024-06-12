@@ -7,7 +7,7 @@ def run():
     clean_acc, robust_acc = benchmark(
         dataset="URL",
         model="STG_Default",
-        distance="L2 ",
+        distance="L2",
         constraints=True,
     )
     print(f"Clean accuracy: {clean_acc}")
