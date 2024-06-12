@@ -2,6 +2,10 @@
 
 TabularBench: Adversarial robustness benchmark for tabular data
 
+**Leaderboard**: [https://serval-uni-lu.github.io/tabularbench/](https://serval-uni-lu.github.io/tabularbench/)
+
+**Paper**: under review, preprint available shortly.
+
 ## Installation
 
 ### Using Docker (recommended)
