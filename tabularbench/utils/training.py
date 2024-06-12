@@ -32,19 +32,6 @@ def cut_in_batch(
     return [arr[batch_i] for batch_i in batches_i]
 
 
-def dict2obj(d: Dict[str, Any]) -> Any:
-    dumped_data = json.dumps(d)
-    result = json.loads(
-        dumped_data, object_hook=lambda x: SimpleNamespace(**x)
-    )
-    return result
-
-
-def parent_exists(path: str) -> str:
-    pathlib.Path(path).parent.mkdir(parents=True, exist_ok=True)
-    return path
-
-
 class Timer:
     def __init__(self):
         self.save_times = []
@@ -141,47 +128,3 @@ def cross_validation(model, X, y, metric, args, n_jobs=1):
     test_timer = np.array([e[2] for e in out]).mean()
 
     return metric_val, (train_timer, test_timer)
-
-
-def round_func_BPDA(input):
-    # This is equivalent to replacing round function (non-differentiable) with
-    # an identity function (differentiable) only when backward.
-    forward_value = torch.round(input)
-    out = input.clone()
-    out.data = forward_value.data
-    return out
-
-
-def to_torch_number(
-    tensor: Union[torch.Tensor, NDNumber, pd.DataFrame]
-) -> torch.Tensor:
-    if isinstance(tensor, torch.Tensor):
-        return tensor
-
-    if isinstance(tensor, np.ndarray):
-        return torch.from_numpy(tensor).float()
-
-    if isinstance(tensor, pd.DataFrame):
-        return torch.from_numpy(tensor.values).float()
-
-    if isinstance(tensor, pd.Series):
-        return torch.from_numpy(tensor.values).float()
-
-    raise NotImplementedError(f"Unsupported type: {type(tensor)}")
-
-
-def to_numpy_number(tensor: Union[torch.Tensor, NDNumber]) -> NDNumber:
-    if isinstance(tensor, torch.Tensor):
-        return tensor.detach().cpu().numpy()
-
-    elif isinstance(tensor, np.ndarray):
-        return tensor
-
-    raise NotImplementedError(f"Unsupported type: {type(tensor)}")
-
-
-def binary_to_2dim(tensor: torch.Tensor) -> torch.Tensor:
-    if (tensor.ndim == 1) or (tensor.shape[1] == 1):
-        tensor = torch.column_stack((1 - tensor, tensor))
-
-    return tensor

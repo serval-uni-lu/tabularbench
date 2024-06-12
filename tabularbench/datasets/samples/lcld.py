@@ -146,7 +146,7 @@ def create_dataset(
         "thibault_simonetto_uni_lu/"
         "EeKpMXnQNo9CuRaLcHNjiX0B4Tf2H_HV3OKmlqvwbZZ-aA?download=1",
         file_data_source=CsvDataSource(
-            path="./data/tabularbench/lcld_v2/lcld_v2.csv"
+            path="./data/datasets/lcld_v2/lcld_v2.csv"
         ),
     )
     metadata_source = DownloadFileDataSource(
@@ -154,7 +154,7 @@ def create_dataset(
         "thibault_simonetto_uni_lu/"
         "EfIRH-UBrW1BiYwvSjlyZIIBFbOiALcxUzdZ5T11qhILlw?download=1",
         file_data_source=CsvDataSource(
-            path="./data/tabularbench/lcld_v2/lcld_v2_metadata.csv"
+            path="./data/datasets/lcld_v2/lcld_v2_metadata.csv"
         ),
     )
 
@@ -173,7 +173,7 @@ def create_dataset(
             "thibault_simonetto_uni_lu/"
             "EYRPThLbct9DlYcWsKUbRlgBES9QO2Nk8hZs1cmrQ7tzMQ?download=1",
             file_data_source=CsvDataSource(
-                path="./data/tabularbench/lcld_201317/lcld_201317.csv"
+                path="./data/datasets/lcld_201317/lcld_201317.csv"
             ),
         )
         metadata_source = DownloadFileDataSource(
@@ -181,7 +181,7 @@ def create_dataset(
             "thibault_simonetto_uni_lu/"
             "EUS4y7I7-FBOrMKV7tb7tmsBUCHdAkCBKXaqEu4V-YuZeQ?download=1",
             file_data_source=CsvDataSource(
-                path="./data/tabularbench/lcld_201317/lcld_201317_metadata.csv"
+                path="./data/datasets/lcld_201317/lcld_201317_metadata.csv"
             ),
         )
 
@@ -193,7 +193,7 @@ def create_dataset(
                 "thibault_simonetto_uni_lu/"
                 "EVMe8n0hiEJCuf3Y1oO7BmwBBgL0uzAAizboz-aSlcxwBA?download=1",
                 file_data_source=CsvDataSource(
-                    path="./data/tabularbench/lcld_201317_ds/lcld_201317_ds.csv"
+                    path="./data/datasets/lcld_201317_ds/lcld_201317_ds.csv"
                 ),
             )
             metadata_source = DownloadFileDataSource(
@@ -201,7 +201,7 @@ def create_dataset(
                 "thibault_simonetto_uni_lu/"
                 "EZ9ttVvRzSZPjGtcnmxUwYEBZsxhByGttYAU9GGzX5kosQ?download=1",
                 file_data_source=CsvDataSource(
-                    path="./data/tabularbench/lcld_201317_ds/lcld_201317_ds_metadata.csv"
+                    path="./data/datasets/lcld_201317_ds/lcld_201317_ds_metadata.csv"
                 ),
             )
 

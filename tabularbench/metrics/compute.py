@@ -49,7 +49,7 @@ def compute_metrics_from_scores(
     if isinstance(metrics, Metric):
         return compute_metrics_from_scores([metrics], y, y_score)[0]
 
-    y_2d = OneHotEncoder(sparse=False).fit_transform(y[:, None])
+    y_2d = OneHotEncoder(sparse_output=False).fit_transform(y[:, None])
 
     y_pred = np.argmax(y_score, axis=1)
     out = []

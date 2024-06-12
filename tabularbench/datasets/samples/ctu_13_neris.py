@@ -127,7 +127,7 @@ def create_dataset() -> Dataset:
         "thibault_simonetto_uni_lu/"
         "Ed5Wox3GpUtChu5ZYzMfACEB3PDRE3fMloUw04MSNiAkTQ?download=1",
         file_data_source=CsvDataSource(
-            path="./data/tabularbench/ctu_13_neris/ctu_13_neris.csv"
+            path="./data/datasets/ctu_13_neris/ctu_13_neris.csv"
         ),
     )
     metadata_source = DownloadFileDataSource(
@@ -135,7 +135,7 @@ def create_dataset() -> Dataset:
         "thibault_simonetto_uni_lu/"
         "ESz5WJPXeF1Fv_i3vVk9cY8B-fqbrYuaaUy_e_iypmZFbQ?download=1",
         file_data_source=CsvDataSource(
-            path="./data/tabularbench/ctu_13_neris/ctu_13_neris_metadata.csv"
+            path="./data/datasets/ctu_13_neris/ctu_13_neris_metadata.csv"
         ),
     )
     tasks = [
