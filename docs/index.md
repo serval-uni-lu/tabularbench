@@ -1,5 +1,6 @@
 ---
 title: TabularBench
+datatable: true
 ---
 
 TabularBench: Adversarial robustness benchmark for tabular data
