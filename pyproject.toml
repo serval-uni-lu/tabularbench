@@ -23,6 +23,7 @@ einops = "^0.6.1"
 lifelines = "^0.27.8"
 pytorch-tabnet = "^4.1.0"
 pymoo = "0.5.0"
+pyarrow = "^16.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^5.0.0"
