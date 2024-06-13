@@ -10,8 +10,25 @@ TabularBench: Adversarial robustness benchmark for tabular data
 
 ## Leaderboard
 
-{% include_relative leaderboard.html %}
+### CTU
 
+{% include_relative ctu.html %}
+
+### LCLD
+
+{% include_relative lcld.html %}
+
+### Malware
+
+{% include_relative malware.html %}
+
+### URL
+
+{% include_relative url.html %}
+
+### WIDS
+
+{% include_relative wids.html %}
 
 <script>
     $('table').DataTable({"bPaginate": false,})
