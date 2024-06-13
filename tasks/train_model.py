@@ -96,7 +96,7 @@ def train_save_model(
 
     study_name = f"{model_name}_{dataset_name}"
     storage_name = (
-        f"sqlite:///data/model_parameters/{model_name}/{study_name}.db"
+        f"sqlite:///data/model_parameters/{dataset_name}/{study_name}.db"
     )
     print(f"Using DB file: {storage_name}")
 
