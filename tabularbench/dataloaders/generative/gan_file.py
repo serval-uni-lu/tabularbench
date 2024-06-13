@@ -123,7 +123,7 @@ def get_adversarial_collate(attack, custom_loader):
 
 
 def get_path_in(root: str, n: int, dataset: str, gan_model: str) -> str:
-    return f"{root}/{gan_model}/{dataset}/synthetic_{n}.parquet"
+    return f"{root}/{dataset}/{gan_model}/synthetic_{n}.parquet"
 
 
 def generate(
@@ -137,7 +137,8 @@ def generate(
     print(f"Generating {n}")
     path = get_path_in(root, n, dataset, gan_model)
     if not Path(path).exists():
-        return df
+        exit(0)
+        return tensor_in
 
     df = pd.read_parquet(path)
 

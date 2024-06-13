@@ -184,22 +184,36 @@ def train_save_model(
 
 if __name__ == "__main__":
     train_params = TrainParams(
-        subset=2000,
-        train_batch_size=1000,
-        val_batch_size=1000,
+        subset=0,
+        train_batch_size=1024,
+        val_batch_size=2048,
         verbose=0,
-        epochs=2,
+        epochs=100,
         device="cpu",
     )
 
     # for dataset in ["ctu_13_neris", "url", "lcld_v2_iid", "malware", "wids"]:
-    for dataset in ["lcld_v2_iid"]:
+    for dataset in ["url"]:
 
         # for models in ["tabtransformer", "torchrln", "stg", "tabnet", "vime"]:
-        for models in ["vime"]:
+        for models in ["stg"]:
 
-            # for dataloader in ["default","cutmix_madry", "madry", "cutmix", ]:
-            for dataloader in ["madry"]:
+            for dataloader in [
+                "default",
+                "madry",
+                "cutmix",
+                "cutmix_madry",
+                "ctgan",
+                "ctgan_madry",
+                "goggle",
+                "goggle_madry",
+                "tablegan",
+                "tablegan_madry",
+                "tvae",
+                "tvae_madry",
+                "wgan",
+                "wgan_madry",
+            ]:
 
                 train_save_model(
                     dataset_name=dataset,
@@ -207,51 +221,3 @@ if __name__ == "__main__":
                     dataloader=dataloader,
                     train_params=train_params,
                 )
-
-
-if False:
-    parser = ArgumentParser(
-        description="Training with Hyper-parameter optimization"
-    )
-    parser.add_argument(
-        "--dataset_name",
-        type=str,
-    )
-    parser.add_argument(
-        "--model_name",
-        type=str,
-    )
-
-    parser.add_argument("--epochs", type=int, default=100)
-    parser.add_argument("--subset", type=int, default=0)
-    parser.add_argument("--train_batch_size", type=int, default=1024)
-    parser.add_argument("--val_batch_size", type=int, default=2048)
-    parser.add_argument("--verbose", type=int, default=0)
-    parser.add_argument(
-        "--device",
-        type=str,
-        default="cuda",
-    )
-    parser.add_argument(
-        "--custom_dataloader",
-        type=str,
-        default="default",
-    )
-
-    args = parser.parse_args()
-
-    train_params = TrainParams(
-        subset=args.subset,
-        train_batch_size=args.train_batch_size,
-        val_batch_size=args.val_batch_size,
-        verbose=args.verbose,
-        epochs=args.epochs,
-        device=args.device,
-    )
-
-    train_save_model(
-        dataset_name=args.dataset_name,
-        model_name=args.model_name,
-        custom_dataloader=args.custom_dataloader,
-        train_params=train_params,
-    )

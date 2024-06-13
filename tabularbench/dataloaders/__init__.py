@@ -2,10 +2,15 @@ import numpy as np
 
 from tabularbench.dataloaders.adversarial.madry import MadryATDataLoader
 from tabularbench.dataloaders.default import DefaultDataLoader
+from tabularbench.dataloaders.generative.ctgan import CTGanDataLoader
 from tabularbench.dataloaders.generative.gan_file import GanFileDataLoader
+from tabularbench.dataloaders.generative.goggle import GoggleDataLoader
+from tabularbench.dataloaders.generative.tablegan import TableGanDataLoader
+from tabularbench.dataloaders.generative.tvae import TVAEDataLoader
+from tabularbench.dataloaders.generative.wgan import WGanDataLoader
 from tabularbench.dataloaders.mix.cutmix import CutmixDataLoader
 
-SYNTHETIC_ROOT_PATH = "./data/synthetic/tabgan/"
+SYNTHETIC_ROOT_PATH = "./data/synthetic/"
 
 
 def get_custom_dataloader(
@@ -43,111 +48,101 @@ def get_custom_dataloader(
             },
         ),
         "ctgan": (
-            GanFileDataLoader,
+            CTGanDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "ctgan",
                 "mlc_dataset": dataset,
                 "attack": "",
             },
         ),
         "ctgan_madry": (
-            GanFileDataLoader,
+            CTGanDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "ctgan",
                 "mlc_dataset": dataset,
                 "attack": "pgd",
             },
         ),
         "tablegan": (
-            GanFileDataLoader,
+            TableGanDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "tablegan",
                 "mlc_dataset": dataset,
                 "attack": "",
             },
         ),
         "tablegan_madry": (
-            GanFileDataLoader,
+            TableGanDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "tablegan",
                 "mlc_dataset": dataset,
                 "attack": "pgd",
             },
         ),
         "tvae": (
-            GanFileDataLoader,
+            TVAEDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "tvae",
                 "mlc_dataset": dataset,
                 "attack": "",
             },
         ),
         "tvae_madry": (
-            GanFileDataLoader,
+            TVAEDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "tvae",
                 "mlc_dataset": dataset,
                 "attack": "pgd",
             },
         ),
         "wgan": (
-            GanFileDataLoader,
+            WGanDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "wgan",
                 "mlc_dataset": dataset,
                 "attack": "",
             },
         ),
         "wgan_madry": (
-            GanFileDataLoader,
+            WGanDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "wgan",
                 "mlc_dataset": dataset,
                 "attack": "pgd",
             },
         ),
         "goggle": (
-            GanFileDataLoader,
+            GoggleDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "goggle",
                 "mlc_dataset": dataset,
                 "attack": "",
             },
         ),
         "goggle_madry": (
-            GanFileDataLoader,
+            GoggleDataLoader,
             {
                 "ratio": 0.5,
                 "augment": 12,
                 "synthetic_root_path": SYNTHETIC_ROOT_PATH,
-                "gan_name": "goggle",
                 "mlc_dataset": dataset,
                 "attack": "pgd",
             },
