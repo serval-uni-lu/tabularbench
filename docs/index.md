@@ -12,23 +12,23 @@ TabularBench: Adversarial robustness benchmark for tabular data
 
 ### CTU
 
-{% include_relative ctu.html %}
+{% include_relative ctu.md %}
 
 ### LCLD
 
-{% include_relative lcld.html %}
+{% include_relative lcld.md %}
 
 ### Malware
 
-{% include_relative malware.html %}
+{% include_relative malware.md %}
 
 ### URL
 
-{% include_relative url.html %}
+{% include_relative url.md %}
 
 ### WIDS
 
-{% include_relative wids.html %}
+{% include_relative wids.md %}
 
 <script>
     $('table').DataTable({"bPaginate": false,})
