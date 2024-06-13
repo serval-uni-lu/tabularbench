@@ -39,7 +39,7 @@ This allows you to edit the code on your host machine and run the code in the Do
     poetry install
     ```
 
-### Using conda (untested)
+### Using conda
 
 1. Clone the repository
 
