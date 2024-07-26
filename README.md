@@ -4,7 +4,11 @@ TabularBench: Adversarial robustness benchmark for tabular data
 
 **Leaderboard**: [https://serval-uni-lu.github.io/tabularbench/](https://serval-uni-lu.github.io/tabularbench/)
 
-**Paper**: under review, preprint available shortly.
+**Research papers**:
+
+- Benchmark: [TabularBench: Benchmarking Adversarial Robustness for Tabular Deep Learning in Real-world Use-cases](./doc/tabularbench.pdf)
+- CAPGD and CAA attacks: [Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data](https://arxiv.org/abs/2406.00775)
+- MOEVA attack: [A Unified Framework for Adversarial Attack and Defense in Constrained Feature Space](https://arxiv.org/abs/2112.01156)
 
 ## Installation
 
