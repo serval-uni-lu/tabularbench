@@ -1,0 +1,4 @@
+Constraints
+===========
+
+Documentation in progress.
