@@ -62,8 +62,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs:
-      - build
-      - docs
+      - build-website
+      - build-docs
     steps:
       - name: Download website
         uses: actions/download-artifact@v4
