@@ -23,6 +23,8 @@ for dataset_name in dataset_aliases:
     assert x.shape[1] == metadata.shape[0]
 ```
 
-## Extending datasets
+## Building a new dataset
+
+## Submitting a new dataset
 
 Documention in progress.

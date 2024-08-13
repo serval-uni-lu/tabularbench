@@ -7,9 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "TabularBench"
-copyright = "2024, Thibault Simonetto"
-author = "Thibault Simonetto"
-release = "0.0.1"
+copyright = "2024, Thibault Simonetto, Salah Ghamizi, Maxime Cordy"
+author = "Thibault Simonetto, Salah Ghamizi"
+release = "0.1.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
