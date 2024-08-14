@@ -31,6 +31,16 @@ TabularBench: Adversarial robustness benchmark for tabular data
 Note: The `./tasks/run_benchmark.sh` script mounts the current directory to the `/workspace` directory in the Docker container.
 This allows you to edit the code on your host machine and run the code in the Docker container without rebuilding.
 
+### From PyPI
+
+We recommend using Python 3.8.10.
+
+1. Install the package from PyPI
+
+```bash
+pip install tabularbench
+```
+
 ### With Pyenv and Poetry
 
 1. Clone the repository
