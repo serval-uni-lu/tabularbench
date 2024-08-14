@@ -1,13 +1,14 @@
 name: Submit a New Model
 description: Use this template to submit a new model.
-labels: ["model-submission"]
+labels: ["contribution"]
+title: "[Model]: "
 body:
   - type: input
     id: model_name
     attributes:
       label: Model name
       description: Provide a name for the model.
-      value: "e.g., ResNet50 Transfer Learning Model"
+      value: "e.g., TabTransformer Cutmix Model"
 
   - type: textarea
     id: paper_reference
@@ -49,7 +50,6 @@ body:
     id: model_zoo
     attributes:
       label: Share my model in the model zoo
-      description:
       value: "[x] I want to share my model in the model zoo (check if true).
       
       [x] I use an architecture that is included among

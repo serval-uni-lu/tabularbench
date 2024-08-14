@@ -8,15 +8,19 @@ body:
     attributes:
       label: Dataset Name
       description: Provide a name for the dataset.
-      placeholder: "e.g., Human Activity Recognition Dataset"
+      value: "e.g., Human Activity Recognition Dataset"
 
   - type: textarea
-    id: short_description
+    id: paper_reference
     attributes:
-      label: Short Description
-      description: Provide a short description of the dataset.
-      placeholder: "A brief overview of the dataset."
-
+      label: Paper & authors references
+      description: Provide a name of the associated paper with the relevant bibtex
+      value: "e.g., @article{simonetto2024constrained,
+     title={Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data},
+     author={Simonetto, Thibault and Ghamizi, Salah and Cordy, Maxime},
+     journal={arXiv preprint arXiv:2406.00775},
+     year={2024}
+   }"
   - type: input
     id: license
     attributes:
@@ -30,3 +34,12 @@ body:
       label: Detailed Description (Optional)
       description: Provide a detailed description of the dataset, if available.
       placeholder: "A more detailed explanation of the dataset."
+
+  - type: textarea
+    id: dataset_files
+    attributes:
+      label: Dataset files
+      description: Provide a detailed description of the dataset, if available.
+      value: "Insert here the URL for the dataset content and the code. You can also open a PR and associate it with this issue"
+
+
