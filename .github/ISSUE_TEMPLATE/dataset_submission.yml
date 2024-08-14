@@ -9,7 +9,6 @@ body:
       label: Dataset Name
       description: Provide a name for the dataset.
       placeholder: "e.g., Human Activity Recognition Dataset"
-      required: true
 
   - type: textarea
     id: short_description
@@ -17,7 +16,6 @@ body:
       label: Short Description
       description: Provide a short description of the dataset.
       placeholder: "A brief overview of the dataset."
-      required: true
 
   - type: input
     id: license
@@ -25,7 +23,6 @@ body:
       label: License
       description: Specify the license under which the dataset is distributed.
       placeholder: "e.g., MIT, Apache 2.0, etc."
-      required: true
 
   - type: textarea
     id: detailed_description
@@ -33,28 +30,3 @@ body:
       label: Detailed Description (Optional)
       description: Provide a detailed description of the dataset, if available.
       placeholder: "A more detailed explanation of the dataset."
-      required: false
-
-  - type: file
-    id: raw_features_file
-    attributes:
-      label: Upload Raw Features File (.csv)
-      description: Please upload the raw features file in CSV format.
-      accept: ".csv"
-      required: true
-
-  - type: file
-    id: metadata_file
-    attributes:
-      label: Upload Metadata File (.csv)
-      description: Please upload the metadata file in CSV format.
-      accept: ".csv"
-      required: true
-
-  - type: file
-    id: constraint_file
-    attributes:
-      label: Upload Constraint Description File (.py)
-      description: Please upload the constraint description file in Python (.py) format.
-      accept: ".py"
-      required: true

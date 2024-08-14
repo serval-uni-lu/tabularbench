@@ -9,52 +9,54 @@ body:
       label: Model Name
       description: Provide a name for the model.
       placeholder: "e.g., ResNet50 Transfer Learning Model"
-      required: true
 
   - type: textarea
-    id: short_description
+    id: paper_reference
     attributes:
-      label: Short Description
-      description: Provide a short description of the model.
-      placeholder: "A brief overview of the model."
-      required: true
-
-  - type: input
-    id: license
-    attributes:
-      label: License
-      description: Specify the license under which the model is distributed.
-      placeholder: "e.g., MIT, Apache 2.0, etc."
-      required: true
+      label: Paper Reference
+      description: Provide a name of the associated paper with the relevant bibtex
+      placeholder: "e.g., @article{simonetto2024constrained,
+     title={Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data},
+     author={Simonetto, Thibault and Ghamizi, Salah and Cordy, Maxime},
+     journal={arXiv preprint arXiv:2406.00775},
+     year={2024}
+   }"
 
   - type: textarea
-    id: detailed_description
+    id: claim
     attributes:
-      label: Detailed Description (Optional)
-      description: Provide a detailed description of the model, if available.
-      placeholder: "A more detailed explanation of the model."
-      required: false
+      label: Leaderboard Claim(s)
+      description: Add here the claim for your model.
+      placeholder: "
+    Architecture:
+    
+    Dataset: 
+    
+    eps: 
+    
+    Clean accuracy:
+    
+    Robust accuracy:
+    
+    Additional data: true/false
+    
+    Evaluation method:
+    
+    Checkpoint and code: (insert here the URL for the checkpoint and the code. If you don't want
+    to share your checkpoint publicly, you can share it for a private submission via an email
+    to adversarial.benchmark@gmail.com). You can also create a PR and associate it with this issue.
+"
 
-  - type: file
-    id: hyperparameter_file
+  - type: textarea
+    id: model_zoo
     attributes:
-      label: Upload Hyperparameter File (.json)
-      description: Please upload the hyperparameter file in JSON format.
-      accept: ".json"
-      required: true
+      label: Share my model in the model zoo
+      description:
+      placeholder: "[] I want to share my model in the model zoo (check if true).
+      
+      [] I use an architecture that is included among
+those [here](https://github.com/serval-uni-lu/tabularbench/tree/main/tabularbench/models/tabsurvey). If not, I added the link to the architecture implementation so that it can be added.
 
-  - type: file
-    id: weight_file
-    attributes:
-      label: Upload Weight File (.pt)
-      description: Please upload the model weight file in PyTorch (.pt) format.
-      accept: ".pt"
-      required: true
+[] I agree to release my model(s) under MIT license (check if true) OR under a custom license, located here: (put the custom license URL here if a custom license is needed. If no URL is specified, we assume that you are fine with MIT)
+"
 
-  - type: file
-    id: model_description_file
-    attributes:
-      label: Upload Model Description File (.py)
-      description: Please upload the model description file in Python (.py) format.
-      accept: ".py"
-      required: true
