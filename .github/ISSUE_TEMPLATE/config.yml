@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Submit a New Dataset
+    url: /issues/new?template=dataset_submission.yml
+    about: Submit a new dataset with the required files and details.
+
+  - name: Submit a New Model
+    url: /issues/new?template=model_submission.yml
+    about: Submit a new model with the required files and details.

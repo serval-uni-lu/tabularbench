@@ -1,0 +1,60 @@
+name: Submit a New Model
+description: Use this template to submit a new model.
+title: "[Model]: "
+labels: ["model-submission"]
+body:
+  - type: input
+    id: model_name
+    attributes:
+      label: Model Name
+      description: Provide a name for the model.
+      placeholder: "e.g., ResNet50 Transfer Learning Model"
+      required: true
+
+  - type: textarea
+    id: short_description
+    attributes:
+      label: Short Description
+      description: Provide a short description of the model.
+      placeholder: "A brief overview of the model."
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: Specify the license under which the model is distributed.
+      placeholder: "e.g., MIT, Apache 2.0, etc."
+      required: true
+
+  - type: textarea
+    id: detailed_description
+    attributes:
+      label: Detailed Description (Optional)
+      description: Provide a detailed description of the model, if available.
+      placeholder: "A more detailed explanation of the model."
+      required: false
+
+  - type: file
+    id: hyperparameter_file
+    attributes:
+      label: Upload Hyperparameter File (.json)
+      description: Please upload the hyperparameter file in JSON format.
+      accept: ".json"
+      required: true
+
+  - type: file
+    id: weight_file
+    attributes:
+      label: Upload Weight File (.pt)
+      description: Please upload the model weight file in PyTorch (.pt) format.
+      accept: ".pt"
+      required: true
+
+  - type: file
+    id: model_description_file
+    attributes:
+      label: Upload Model Description File (.py)
+      description: Please upload the model description file in Python (.py) format.
+      accept: ".py"
+      required: true
