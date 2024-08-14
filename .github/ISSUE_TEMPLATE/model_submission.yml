@@ -1,6 +1,5 @@
 name: Submit a New Model
 description: Use this template to submit a new model.
-title: "[Model]: "
 labels: ["model-submission"]
 body:
   - type: input
@@ -8,14 +7,14 @@ body:
     attributes:
       label: Model Name
       description: Provide a name for the model.
-      placeholder: "e.g., ResNet50 Transfer Learning Model"
+      value: "e.g., ResNet50 Transfer Learning Model"
 
   - type: textarea
     id: paper_reference
     attributes:
       label: Paper Reference
       description: Provide a name of the associated paper with the relevant bibtex
-      placeholder: "e.g., @article{simonetto2024constrained,
+      value: "e.g., @article{simonetto2024constrained,
      title={Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data},
      author={Simonetto, Thibault and Ghamizi, Salah and Cordy, Maxime},
      journal={arXiv preprint arXiv:2406.00775},
@@ -27,22 +26,21 @@ body:
     attributes:
       label: Leaderboard Claim(s)
       description: Add here the claim for your model.
-      placeholder: "
-    Architecture:
+      value: "# Architecture:
     
-    Dataset: 
+    # Dataset: 
     
-    eps: 
+    # Eps: 
     
-    Clean accuracy:
+    # Clean accuracy:
     
-    Robust accuracy:
+    # Robust accuracy:
     
-    Additional data: true/false
+    # Additional data: true/false
     
-    Evaluation method:
+    # Evaluation method:
     
-    Checkpoint and code: (insert here the URL for the checkpoint and the code. If you don't want
+    # Checkpoint and code: (insert here the URL for the checkpoint and the code. If you don't want
     to share your checkpoint publicly, you can share it for a private submission via an email
     to adversarial.benchmark@gmail.com). You can also create a PR and associate it with this issue.
 "
@@ -52,11 +50,11 @@ body:
     attributes:
       label: Share my model in the model zoo
       description:
-      placeholder: "[] I want to share my model in the model zoo (check if true).
+      value: "[ ] I want to share my model in the model zoo (check if true).
       
-      [] I use an architecture that is included among
+      [ ] I use an architecture that is included among
 those [here](https://github.com/serval-uni-lu/tabularbench/tree/main/tabularbench/models/tabsurvey). If not, I added the link to the architecture implementation so that it can be added.
 
-[] I agree to release my model(s) under MIT license (check if true) OR under a custom license, located here: (put the custom license URL here if a custom license is needed. If no URL is specified, we assume that you are fine with MIT)
+[ ] I agree to release my model(s) under MIT license (check if true) OR under a custom license, located here: (put the custom license URL here if a custom license is needed. If no URL is specified, we assume that you are fine with MIT)
 "
 
