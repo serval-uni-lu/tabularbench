@@ -29,6 +29,13 @@ body:
       placeholder: "e.g., MIT, Apache 2.0, etc."
 
   - type: textarea
+    id: dataset_motivation
+    attributes:
+      label: Motivation of the dataset
+      description: Explain what is the added value of the dataset to the benchmark. This can be for example the fact that existing attacks fail to attack it, and that the dataset shows unique properties (in terms of features, constraints, class imbalance), or unique domain of application.
+      placeholder: "A motivation for the dataset."
+
+  - type: textarea
     id: detailed_description
     attributes:
       label: Detailed Description (Optional)
