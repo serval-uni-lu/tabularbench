@@ -1,4 +1,4 @@
-name: Submit a New Dataset
+name: Submit a new attack
 description: Use this template to submit a new tabular attack.
 title: "[Attack]: "
 labels: ["contribution"]

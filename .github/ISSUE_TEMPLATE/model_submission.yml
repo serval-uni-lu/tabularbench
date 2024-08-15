@@ -1,4 +1,4 @@
-name: Submit a New Model
+name: Submit a new model
 description: Use this template to submit a new model.
 labels: ["contribution"]
 title: "[Model]: "
@@ -43,7 +43,7 @@ body:
     
     * Checkpoint and code: (insert here the URL for the checkpoint and the code. If you don't want
     to share your checkpoint publicly, you can share it for a private submission via an email
-    to tabularbench@gmail.com). You can also create a PR and associate it with this issue.
+    to tabularbench[AT]gmail.com). You can also create a PR and associate it with this issue.
 "
 
   - type: textarea
