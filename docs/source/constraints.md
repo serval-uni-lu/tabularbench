@@ -27,7 +27,7 @@ constraint1 = Feature(0) == Feature(1) + Feature(2)
 constraint2 = Feature("open_acc") <= Feature("total_acc")
 ```
 
-### Pre-builts:
+### Pre-builts
 
 - Base operators: Pre-built operators include equalities, inequalities, math operations (+,-,*,/, ...) custom operators can be built by extending the class *MathOperation*:
 - Safe operators: *SafeDivision* and *Log* allow a fallback value if the denominator is 0.

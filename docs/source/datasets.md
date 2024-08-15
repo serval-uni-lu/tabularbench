@@ -13,7 +13,8 @@ For each dataset,
 | WIDS    | Lee et al. (2020)               | ICU patient survival      | 91 713    | 186        | 91.4/8.6        |
 | MALWARE | Dyrmishi et al. (2022)          | Malware PE classification | 17 584    | 24 222             | 50/50           |
 
-### Datasets descriptions
+### Datasets description
+
 - **LCLD** (license: CC0: Public Domain) We develop a dataset derived from the publicly accessible Lending Club Loan Data. This dataset includes 151 features,
 with each entry representing a loan approved by the Lending Club. However, some of these approved
 loans are not repaid and are instead charged off. Our objective is to predict, at the time of the request,
