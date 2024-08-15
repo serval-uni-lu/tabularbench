@@ -52,9 +52,11 @@ body:
       label: Share my model in the model zoo
       value: "[x] I want to share my model in the model zoo (check if true).
       
+      [x] I evaluated the model at least on CAA, and optionally, other attacks (mention here the attack and the robust accuracy).
+      
       [x] I use an architecture that is included among
 those [here](https://github.com/serval-uni-lu/tabularbench/tree/main/tabularbench/models/tabsurvey). If not, I added the link to the architecture implementation so that it can be added.
 
-[x] I agree to release my model(s) under MIT license (check if true) OR under a custom license, located here: (put the custom license URL here if a custom license is needed. If no URL is specified, we assume that you are fine with MIT)
+[x] I agree to release my model(s) under MIT license (check if true) OR under a custom license, located here: (put the custom license URL here if a custom license is needed. If no URL is specified, we assume that you are fine with MIT.)
 "
 

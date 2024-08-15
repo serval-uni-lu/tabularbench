@@ -1,14 +1,14 @@
 name: Submit a New Dataset
-description: Use this template to submit a new dataset.
-title: "[Dataset]: "
+description: Use this template to submit a new tabular attack.
+title: "[Attack]: "
 labels: ["contribution"]
 body:
   - type: input
-    id: dataset_name
+    id: attack_name
     attributes:
-      label: Dataset Name
-      description: Provide a name for the dataset.
-      value: "e.g., Human Activity Recognition Dataset"
+      label: Attack Name
+      description: Provide a name for the attack.
+      value: "e.g., BASES"
 
   - type: textarea
     id: paper_reference
@@ -25,21 +25,21 @@ body:
     id: license
     attributes:
       label: License
-      description: Specify the license under which the dataset is distributed.
+      description: Specify the license under which the attack code is distributed.
       placeholder: "e.g., MIT, Apache 2.0, etc."
 
   - type: textarea
     id: detailed_description
     attributes:
       label: Detailed Description (Optional)
-      description: Provide a detailed description of the dataset, if available.
+      description: Provide a detailed description of the attack, if available.
       placeholder: "A more detailed explanation of the dataset."
 
   - type: textarea
-    id: dataset_files
+    id: attack_files
     attributes:
-      label: Dataset files
-      description: Provide the code and files of the dataset.
-      value: "Insert here the URL for the dataset content and the code. You can also open a PR and associate it with this issue."
+      label: Attack files
+      description: Provide the code to the attack.
+      value: "Insert here the URL for the attack code. You can also open a PR and associate it with this issue."
 
 
