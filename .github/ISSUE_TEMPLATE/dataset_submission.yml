@@ -1,6 +1,6 @@
 name: Submit a new dataset
 description: Use this template to submit a new dataset.
-title: "[Dataset]: "
+title: "[New dataset]: "
 labels: ["contribution"]
 body:
   - type: input
@@ -32,7 +32,7 @@ body:
     id: dataset_motivation
     attributes:
       label: Motivation of the dataset
-      description: Explain what is the added value of the dataset to the benchmark. This can be for example the fact that existing attacks fail to attack it, and that the dataset shows unique properties (in terms of features, constraints, class imbalance), or unique domain of application.
+      description: Explain what is the added value of the dataset to the benchmark. This can be for example the fact that existing attacks fail to attack it, or that the dataset shows unique properties (in terms of features, constraints, class imbalance, ...), or unique domain of application.
       placeholder: "A motivation for the dataset."
 
   - type: textarea
@@ -47,6 +47,6 @@ body:
     attributes:
       label: Dataset files
       description: Provide the code and files of the dataset.
-      value: "Insert here the URL for the dataset content and the code. You can also open a PR and associate it with this issue."
+      value: "Insert here the URL for the dataset content and the code, or attach a (small) zip file directly. You can also open a PR and associate it with this issue instead."
 
 

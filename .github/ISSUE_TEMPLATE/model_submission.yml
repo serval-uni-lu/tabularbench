@@ -1,7 +1,7 @@
 name: Submit a new model
 description: Use this template to submit a new model.
 labels: ["contribution"]
-title: "[Model]: "
+title: "[New model]: "
 body:
   - type: input
     id: model_name
