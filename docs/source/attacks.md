@@ -8,6 +8,15 @@
 
 ## Building a new attack
 
+Attacks from TabularBench follow the same structre as attacks from [TorchAttacks.](https://github.com/Harry24k/adversarial-attacks-pytorch)
+A new attack should then extend *torchattacks.attack.Attack*. 
+
+To evaluate success rate with constraint satisfaction in the new attack, call *tabularbench.attacks.objective_calculator.ObjectiveCalculator*:
+
+To evaluate individual constraint losses, call *tabularbench.constraints.constraints_backend_executor.ConstraintsExecutor*
+
+For a complete example, refer to the implementation of [CAPGD](https://github.com/serval-uni-lu/tabularbench/blob/main/tabularbench/attacks/cpgd/cpgd.py)
+
 ## Submitting a new attack
 
 We welcome attacks contributions that bring additional insights or challenges to the tabular adversarial robustness community.
