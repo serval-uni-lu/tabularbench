@@ -54,7 +54,7 @@ jobs:
     - name: Install dependencies
       run: poetry install --with dev
     - name: Sphinx
-      run: make clean html
+      run: poetry run make clean html
       working-directory: docs
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
