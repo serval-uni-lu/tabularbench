@@ -25,16 +25,17 @@ from tabularbench.utils.datatypes import to_numpy_number
 
 class CAPGD(Attack):
     r"""
-    APGD in the paper 'Reliable evaluation of adversarial robustness with an ensemble of diverse parameter-free attacks'
-    [https://arxiv.org/abs/2003.01690]
-    [https://github.com/fra31/auto-attack]
+    CAPGD in the paper 'Towards Adaptive Attacks on Constrained Tabular Machine Learning'
+    [https://openreview.net/forum?id=DnvYdmR9OB]
+    
 
     Distance Measure : Linf, L2
 
     Arguments:
         constraints (Constraints) : The constraint object to be checked successively
         scaler (TabScaler): scaler used to transform the inputs
-        model (nn.Module): model to attack.
+        model (tabularbench.models.model): model to attack.
+        model_objective (tabularbench.models.model): model used to compute the objective.
         norm (str): Lp-norm of the attack. ['Linf', 'L2'] (Default: 'Linf')
         eps (float): maximum perturbation. (Default: 8/255)
         steps (int): number of steps. (Default: 10)
@@ -43,16 +44,25 @@ class CAPGD(Attack):
         loss (str): loss function optimized. ['ce', 'dlr'] (Default: 'ce')
         eot_iter (int): number of iteration for EOT. (Default: 1)
         rho (float): parameter for step-size update (Default: 0.75)
+        fix_equality_constraints_end (bool): whether to fix equality constraints at the end. (Default: True)
+        fix_equality_constraints_iter (bool): whether to fix equality constraints at each iteration. (Default: True)
+        adaptive_eps (bool): whether to use adaptive epsilon. (Default: True)
+        random_start (bool): whether to use random start. (Default: True)
+        init_start (bool): whether to initialize the starting point. (Default: True)
+        best_restart (bool): whether to use the best restart. (Default: True)
+        eps_margin (float): margin for epsilon. (Default: 0.05)
         verbose (bool): print progress. (Default: False)
 
     Shape:
-        - images: :math:`(N, C, H, W)` where `N = number of batches`, `C = number of channels`,        `H = height` and `W = width`. It must have a range [0, 1].
-        - labels: :math:`(N)` where each value :math:`y_i` is :math:`0 \leq y_i \leq` `number of labels`.
-        - output: :math:`(N, C, H, W)`.
+        - inputs: (N, D)
+        - labels: (N, C)
+
+    Returns:
+        - outputs: (N, C)
 
     Examples::
-        >>> attack = torchattacks.APGD(model, norm='Linf', eps=8/255, steps=10, n_restarts=1, seed=0, loss='ce', eot_iter=1, rho=.75, verbose=False)
-        >>> adv_images = attack(images, labels)
+        >>> attack = CAPGD(...)
+        >>> outputs = attack(inputs, labels)
 
     """
 
@@ -121,15 +131,16 @@ class CAPGD(Attack):
         ).to(self.device)
 
     def forward(
-        self, images: torch.Tensor, labels: torch.Tensor
+        self, inputs: torch.Tensor, labels: torch.Tensor
     ) -> torch.Tensor:
         r"""
-        Overridden.
+        input shape: [N, D]
+        output shape: [N, C]
         """
-        # self._check_inputs(images)
+        # self._check_inputs(inputs)
 
-        x = images
-        x_in = images.clone()
+        x = inputs
+        x_in = inputs.clone()
         x = self.scaler.transform(x)
 
         x = x.clone().detach().to(self.device)
@@ -672,3 +683,6 @@ class CAPGD(Attack):
                     )
 
             return loss_best, adv_best
+
+# __all__ definition
+__all__ = ['CAPGD']
