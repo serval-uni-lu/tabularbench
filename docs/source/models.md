@@ -28,7 +28,6 @@ Each dataset requires a set of hyper-parameters to be tuned for optimal performa
 | Regularization | STG            | `hidden_dims`, `learning_rate`, `lam`                                                          |
 | Encoding       | VIME           | `p_m`, `α`, `K`, `β`                                                                           |
 | Vanilla        | MLP            | `hidden_dim`, `n_layers`                                                                       |
-|----------------|----------------|------------------------------------------------------------------------------------------------|
 
 
 ### Using an existing model
@@ -96,7 +95,7 @@ We welcome models contributions that bring additional insights or challenges to 
 2. Fill in the form accordingly.
 3. Create a new Pull Request with the model definition and files (.py, pre-trained weights .pt, ...) and associate it with this issue.
 4. We will validate that the model is working correctly, and run the benchmark on it to confirm the claims.
-5. Once included, the dataset will be accessible on the leaderboard, and if agreed on in the form, in the model zoo.
+5. Once included, the model will be accessible on the leaderboard, and if agreed on in the form in the model zoo as well.
 
 If you find issues with existing model in the benchmark or the zoo, please raise a dedicated ticket and do not use the form.
 
