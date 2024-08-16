@@ -44,7 +44,7 @@ class Moeva2:
         MOEVA from the paper 'A Unified Framework for Adversarial Attack and Defense in Constrained Feature Space '
         [https://www.ijcai.org/proceedings/2022/0183]
 
-
+        License: MIT
         Distance Measure : Linf, L2
 
         Arguments:

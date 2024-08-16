@@ -217,6 +217,7 @@ class ConstrainedAutoAttack(Attack):
     CAA from "Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data"
     [https://arxiv.org/abs/2406.00775]
 
+    License: MIT
     Distance Measure : Linf, L2
 
     Arguments:

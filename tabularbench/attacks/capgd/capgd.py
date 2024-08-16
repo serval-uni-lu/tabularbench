@@ -28,7 +28,7 @@ class CAPGD(Attack):
     CAPGD from the paper 'Towards Adaptive Attacks on Constrained Tabular Machine Learning'
     [https://openreview.net/forum?id=DnvYdmR9OB]
     
-
+    License: MIT
     Distance Measure : Linf, L2
 
     Arguments:
