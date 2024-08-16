@@ -97,6 +97,6 @@ We welcome models contributions that bring additional insights or challenges to 
 4. We will validate that the model is working correctly, and run the benchmark on it to confirm the claims.
 5. Once included, the model will be accessible on the leaderboard, and if agreed on in the form in the model zoo as well.
 
-If you find issues with existing model in the benchmark or the zoo, please raise a dedicated ticket and do not use the form.
+If you find issues with existing model in the benchmark or the zoo, please raise a dedicated issue and do not use the form.
 
 Thank you for your contributions.
