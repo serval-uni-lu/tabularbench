@@ -27,7 +27,6 @@ The results of the benchmark can be found on [TabularBench website](https://serv
    constraints
    models
    attacks
-   defenses
 
 .. toctree::
    :maxdepth: 2

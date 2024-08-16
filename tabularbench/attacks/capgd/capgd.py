@@ -127,6 +127,9 @@ class CAPGD(Attack):
         self, inputs: torch.Tensor, labels: torch.Tensor
     ) -> torch.Tensor:
         r"""
+        N: Number of instances
+        D: Number of features
+        C: Number of classes
         input shape: [N, D]
         output shape: [N, C]
         """

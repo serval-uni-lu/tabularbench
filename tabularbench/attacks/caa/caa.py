@@ -24,12 +24,28 @@ class NoAttack:
     """Utility class to have no attack."""
 
     def __call__(self, x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
+        r"""
+        N: Number of instances
+        D: Number of features
+        C: Number of classes
+        input shape: [N, D]
+        output shape: [N, C]
+        """
         return x
 
 
 class ConstrainedMultiAttack(MultiAttack):
-    def __init__(self, objective_calculator, *args, **kargs):
-        super(ConstrainedMultiAttack, self).__init__(*args, **kargs)
+    r"""
+    Constrained Multi Attack (CMA)
+    A generic class to run multiple attacks iteratively while checking the constraint and success rate at each step, and running the nextr attacks only on unsuccessful examples
+
+    Arguments:
+        objective_calculator (ObjectiveCalculator): The objective calculator to be used.
+        attacks (list): List of attacks to be used.
+        verbose (bool): Whether to print the progress. (Default: False)
+    """
+    def __init__(self, objective_calculator, attacks, verbose=False):
+        super(ConstrainedMultiAttack, self).__init__(attacks, verbose=verbose)
         self.objective_calculator = objective_calculator
         self.attack_times = []
         self.robust_accuracies = []
@@ -40,6 +56,9 @@ class ConstrainedMultiAttack(MultiAttack):
     # Override from upper class
     # Moeva does not use the same model as other attacks
     def check_validity(self):
+        r"""
+        Check if at least 2 attacks are available, if the model used in the attack is compatible with each and is the same.
+        """
         if len(self.attacks) < 2:
             warn("More than two attacks should be given.")
 
@@ -57,13 +76,17 @@ class ConstrainedMultiAttack(MultiAttack):
                 "At least one of attacks is referencing a different model."
             )
 
-    def forward(self, images, labels):
+    def forward(self, inputs, labels):
         r"""
-        Overridden.
+        N: Number of instances
+        D: Number of features
+        C: Number of classes
+        input shape: [N, D]
+        output shape: [N, C]
         """
-        batch_size = images.shape[0]
+        batch_size = inputs.shape[0]
         fails = torch.arange(batch_size).to(self.device)
-        final_images = images.clone().detach().to(self.device)
+        final_inputs = inputs.clone().detach().to(self.device)
         labels = labels.clone().detach().to(self.device)
 
         multi_atk_records = [batch_size]
@@ -107,17 +130,17 @@ class ConstrainedMultiAttack(MultiAttack):
             #     exit(0)
             start_time = time.time()
             # attack.objective_calculator = self.objective_calculator
-            adv_images = attack(images[fails], labels[fails])
+            adv_inputs = attack(inputs[fails], labels[fails])
             self.attack_times.append(time.time() - start_time)
 
             # Correct shape
             filter_adv = (
-                adv_images.unsqueeze(1)
-                if len(adv_images.shape) < 3
-                else adv_images
+                adv_inputs.unsqueeze(1)
+                if len(adv_inputs.shape) < 3
+                else adv_inputs
             )
             # Type conversion
-            numpy_clean = to_numpy_number(images[fails]).astype(np.float32)
+            numpy_clean = to_numpy_number(inputs[fails]).astype(np.float32)
             numpy_adv = to_numpy_number(filter_adv)
             # np.save("b.npy", numpy_adv)
             # np.save("b_clean.npy", numpy_clean)
@@ -147,7 +170,7 @@ class ConstrainedMultiAttack(MultiAttack):
 
             # If we found adversarials
             if len(success_attack_indices) > 0:
-                final_images[fails[success_attack_indices]] = filter_adv[
+                final_inputs[fails[success_attack_indices]] = filter_adv[
                     success_attack_indices, success_adversarials_indices, :
                 ].squeeze(1)
                 mask = torch.ones_like(fails)
@@ -186,38 +209,44 @@ class ConstrainedMultiAttack(MultiAttack):
         if self._accumulate_multi_atk_records:
             self._update_multi_atk_records(multi_atk_records)
 
-        return final_images
+        return final_inputs
 
 
 class ConstrainedAutoAttack(Attack):
     r"""
-    Extended AutoAttack in the paper 'Reliable evaluation of adversarial robustness with an ensemble of diverse parameter-free attacks'
-    [https://arxiv.org/abs/2003.01690]
-    [https://github.com/fra31/auto-attack]
-
-    with constrained examples
+    CAA from "Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data"
+    [https://arxiv.org/abs/2406.00775]
 
     Distance Measure : Linf, L2
 
     Arguments:
-        constraints (Constraints) : The constraint object to be checked successively
+        constraints (Constraints) : The constraint object to be used in the attack
+        constraints_eval (Constraints) : The constraint object to be checked at the end
         scaler (TabScaler): scaler used to transform the inputs
-        model (nn.Module): model to attack.
+        model (tabularbench.models.model): model to attack.
+        model_objective (tabularbench.models.model): model used to compute the objective.
+        n_jobs (int): number of parallel jobs. (Default: -1)
+        fix_equality_constraints_end (bool): whether to fix equality constraints at the end. (Default: True)
+        fix_equality_constraints_iter (bool): whether to fix equality constraints at each iteration. (Default: True)
+        eps_margin (float): margin for epsilon. (Default: 0.05)
         norm (str) : Lp-norm to minimize. ['Linf', 'L2'] (Default: 'Linf')
         eps (float): maximum perturbation. (Default: 0.3)
-        version (bool): version. ['standard', 'plus', 'rand'] (Default: 'standard')
+        version (str): version. ['standard'] (Default: 'standard')
         n_classes (int): number of classes. (Default: 10)
         seed (int): random seed for the starting point. (Default: 0)
         verbose (bool): print progress. (Default: False)
+        steps (int): number of steps. (Default: 10)
+        n_gen (int): number of generations. (Default: 100)
+        n_offsprings (int): number of offsprings. (Default: 100)
 
     Shape:
-        - images: :math:`(N, C, H, W)` where `N = number of batches`, `C = number of channels`,        `H = height` and `W = width`. It must have a range [0, 1].
-        - labels: :math:`(N)` where each value :math:`y_i` is :math:`0 \leq y_i \leq` `number of labels`.
-        - output: :math:`(N, C, H, W)`.
+        - inputs: torch.Tensor `(N, F)` where `N = number of batches`, `F=Number of features`.
+        - labels: torch.Tensor `(N, C)` where N = number of batches`, `C=number of classes`. (only binary for now)
+        - output: torch.Tensor `(N, F)` where `N = number of batches`, `F=Number of features`.
 
     Examples::
-        >>> attack = torchattacks.AutoAttack(model, norm='Linf', eps=8/255, version='standard', n_classes=10, seed=None, verbose=False)
-        >>> adv_images = attack(images, labels)
+        >>> attack = ConstrainedAutoAttack(...)
+        >>> outputs = attack(inputs, labels)
 
     """
 
@@ -316,23 +345,31 @@ class ConstrainedAutoAttack(Attack):
         else:
             raise ValueError("Not valid version. ['standard', 'plus', 'rand']")
 
-    def forward(self, images, labels):
+    def forward(self, inputs, labels):
         r"""
-        Overridden.
+        input shape: [N, D]
+        output shape: [N, C]
+
+        N: Number of instances
+        D: Number of features
+        C: Number of classes
         """
 
-        is_numpy = isinstance(images, np.ndarray)
-        images = to_torch_number(images)
+        is_numpy = isinstance(inputs, np.ndarray)
+        inputs = to_torch_number(inputs)
         labels = to_torch_number(labels).long()
 
-        images = images.clone().detach().to(self.device)
+        inputs = inputs.clone().detach().to(self.device)
         labels = labels.clone().detach().to(self.device)
-        adv_images = self._autoattack(images, labels)
+        adv_inputs = self._autoattack(inputs, labels)
 
         if is_numpy:
-            adv_images = to_numpy_number(adv_images)
+            adv_inputs = to_numpy_number(adv_inputs)
 
-        return adv_images
+        return adv_inputs
 
     def get_seed(self):
+        r"""
+        Return the seed for the random number generatorsed in the attack
+        """
         return int(time.time()) if self.seed is None else self.seed
