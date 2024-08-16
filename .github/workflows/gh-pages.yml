@@ -46,13 +46,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
     - name: Install Poetry
       uses: snok/install-poetry@v1
     - name: Install dependencies
-      run: poetry install
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docs/"
+      run: poetry install --with dev
+    - uses: Sphynx
+      run: make clean html
+      working-directory: docs
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
