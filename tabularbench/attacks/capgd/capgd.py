@@ -25,7 +25,7 @@ from tabularbench.utils.datatypes import to_numpy_number
 
 class CAPGD(Attack):
     r"""
-    CAPGD in the paper 'Towards Adaptive Attacks on Constrained Tabular Machine Learning'
+    CAPGD from the paper 'Towards Adaptive Attacks on Constrained Tabular Machine Learning'
     [https://openreview.net/forum?id=DnvYdmR9OB]
     
 
@@ -52,13 +52,6 @@ class CAPGD(Attack):
         best_restart (bool): whether to use the best restart. (Default: True)
         eps_margin (float): margin for epsilon. (Default: 0.05)
         verbose (bool): print progress. (Default: False)
-
-    Shape:
-        - inputs: (N, D)
-        - labels: (N, C)
-
-    Returns:
-        - outputs: (N, C)
 
     Examples::
         >>> attack = CAPGD(...)

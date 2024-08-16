@@ -22,6 +22,7 @@ from pymoo.optimize import minimize
 from pymoo.util.function_loader import is_compiled
 from tqdm import tqdm
 
+from tabularbench.models.model import Model
 from tabularbench.attacks.moeva.history_callback import HistoryCallback
 from tabularbench.attacks.moeva.operators import InitialStateSampling
 from tabularbench.attacks.utils import cut_in_batch
@@ -39,9 +40,37 @@ def tf_lof_off():
 
 
 class Moeva2:
+    r"""
+        MOEVA from the paper 'A Unified Framework for Adversarial Attack and Defense in Constrained Feature Space '
+        [https://www.ijcai.org/proceedings/2022/0183]
+
+
+        Distance Measure : Linf, L2
+
+        Arguments:
+            model (tabularbench.models.model): model to attack.
+            constraints (Constraints) : The constraint object to be checked successively
+            scaler (TabScaler): scaler used to transform the inputs
+            model_objective (tabularbench.models.model): model used to compute the objective.
+            norm (str): Lp-norm of the attack. ['Linf', 'L2'] (Default: 'Linf')
+            eps (float): maximum perturbation. (Default: 8/255)
+            n_gen (int): number of generations. (Default: 100)
+            n_pop (int): number of population. (Default: 203)
+            n_offsprings (int): number of offsprings. (Default: 100)
+            save_history (bool): whether to save the history. (Default: None)
+            seed (int): random seed. (Default: None)
+            n_jobs (int): number of parallel jobs. (Default: 32)
+            verbose (int): verbosity level. (Default: 0)
+
+
+        Examples::
+            >>> attack = Moeva2(...)
+            >>> outputs = attack(inputs, labels)
+
+        """
     def __init__(
         self,
-        model,
+        model:Model,
         constraints: Constraints,
         norm=None,
         fun_distance_preprocess=lambda x: x,
@@ -76,7 +105,15 @@ class Moeva2:
         # Computed
         self.ref_points = None
 
-    def _check_inputs(self, x: np.ndarray, y) -> None:
+    def _check_inputs(self, x: np.ndarray, y: np.ndarray) -> None:
+        r"""
+        Check inputs before attacking.
+        Arguments:
+            x (np.ndarray): input data.
+            y (np.ndarray): target data.
+        Raises:
+            ValueError: if the input is invalid.
+        """
         expected_input_length = self.constraints.mutable_features.shape[0]
         if x.shape[1] != expected_input_length:
             raise ValueError(
@@ -98,7 +135,11 @@ class Moeva2:
             )
 
     def _create_algorithm(self) -> GeneticAlgorithm:
-
+        r"""
+        Initialize the algorithm for tabular data.
+        Returns:
+            algorithm (GeneticAlgorithm): the algorithm.
+        """
         type_mask = self.constraints.feature_types[
             self.constraints.mutable_features
         ]
@@ -144,7 +185,16 @@ class Moeva2:
 
         return algorithm
 
-    def _one_generate(self, x, y: int, classifier):
+    def _one_generate(self, x:np.ndarray, y: int, classifier:Model):
+        r"""
+        Generate an adversarial example for one input.
+        Arguments:
+            x (np.ndarray): input data.
+            y (int): target data.
+            model (Model): Model to attack.
+        Returns:
+            x_adv (np.ndarray): adversarial example.
+        """
         # Reduce log
         termination = get_termination("n_gen", self.n_gen)
 
@@ -189,7 +239,16 @@ class Moeva2:
         else:
             return x_adv
 
-    def _batch_generate(self, x, y, batch_i):
+    def _batch_generate(self, x:np.ndarray, y:np.ndarray, batch_i):
+        r"""
+        Generate adversarial examples for a batch of inputs.
+        Arguments:
+            x (np.ndarray): multiple input data.
+            y (np.ndarray): multiple target data.
+            batch_i (int): batch index.
+        Returns:
+            x_adv (np.ndarray): multiple adversarial examples.
+        """
         Config.show_compile_hint = False
         tf_lof_off()
         # torch.set_num_threads(1)
@@ -215,6 +274,9 @@ class Moeva2:
     # function above
 
     def check_pymoo_compiled(self):
+        r"""
+        Check if pymoo is compiled.
+        """
         if not is_compiled():
             warnings.warn(
                 "Pymoo is not compiled. See https://pymoo.org/installation.html#installation."
@@ -222,7 +284,16 @@ class Moeva2:
             warnings.warn("Deactivating further warning.")
             Config.show_compile_hint = False
 
-    def generate(self, x: np.ndarray, y, batch_size=None):
+    def generate(self, x: np.ndarray, y: np.ndarray, batch_size=None):
+        r"""
+        Generate adversarial examples using batches.
+        Arguments:
+            x (np.ndarray): input data.
+            y (np.ndarray): target data.
+            batch_size (int): batch size.
+        Returns:
+            x_adv (np.ndarray): adversarial examples.
+        """
         self.check_pymoo_compiled()
         if isinstance(x, torch.Tensor):
             return to_torch_number(
@@ -241,14 +312,6 @@ class Moeva2:
             n_desired_batch=1000,
             batch_size=batch_size,
         )
-        # self.n_jobs = 32
-        # if x.shape[-1] == 24222:
-        #     self.n_jobs = 16
-        #     print(type(self.model))
-        #     if isinstance(self.model, VIME):
-        #         self.n_jobs = 8
-
-        # print(f"N_JOBS MOEVA {self.n_jobs}")
 
         if isinstance(y, int):
             y = np.repeat(y, x.shape[0])
@@ -260,7 +323,6 @@ class Moeva2:
         if self.verbose >= 1:
             iterable = tqdm(iterable, total=len(batches_i))
 
-        # print(self.n_jobs)
 
         # Sequential Run
         if self.n_jobs == 1:
@@ -292,6 +354,15 @@ class Moeva2:
             return np.concatenate(out)
 
     def __call__(
-        self, x: np.ndarray, y, batch_size=None, *args, **kwargs
+        self, x: np.ndarray, y:np.ndarray, batch_size=None, *args, **kwargs
     ) -> Any:
+        r"""
+        Wrapper for the froward method: Call the generate function.
+        Arguments:
+            x (np.ndarray): input data.
+            y (np.ndarray): target data.
+            batch_size (int): batch size.
+        Returns:
+            x_adv (np.ndarray): adversarial examples.
+        """
         return self.generate(x, y, batch_size)
