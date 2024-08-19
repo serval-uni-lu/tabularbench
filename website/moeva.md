@@ -9,29 +9,25 @@ datatable: true
 TabularBench: Adversarial robustness benchmark for tabular data
 [Documentation](https://serval-uni-lu.github.io/tabularbench/doc)
 
-## Leaderboard
+## MOEVA attack
 
-You are currently viewing results of the leaderboard. View MOEVA attack results [here](moeva).
+You are currently viewing results for MOEVA attack. [View all attacks](../).
 
 ### CTU
 
-{% include_relative ctu.md %}
+{% include_relative moeva/ctu.md %}
 
 ### LCLD
 
-{% include_relative lcld.md %}
-
-### Malware
-
-{% include_relative malware.md %}
+{% include_relative moeva/lcld.md %}
 
 ### URL
 
-{% include_relative url.md %}
+{% include_relative moeva/url.md %}
 
 ### WIDS
 
-{% include_relative wids.md %}
+{% include_relative moeva/wids.md %}
 
 <script>
     $('table').DataTable({"bPaginate": false,})
