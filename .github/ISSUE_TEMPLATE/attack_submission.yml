@@ -33,7 +33,7 @@ body:
     attributes:
       label: Detailed Description (Optional)
       description: Provide a detailed description of the attack, if available.
-      placeholder: "A more detailed explanation of the dataset."
+      placeholder: "A more detailed explanation of the attack."
 
   - type: textarea
     id: attack_files

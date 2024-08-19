@@ -14,5 +14,6 @@ We welcome attacks contributions that bring additional insights or challenges to
 ## Roadmap
 
 - 0.1.0: Initial release w/ documentation
-- Jan 2025: Distribution of code to train each tabular generator
+- Oct 2024: Distribution of code to train each tabular generator
+- Jan 2025: Updated benchmark with adaptive robustness score. 
 - March 2025: Implementation of additional distances
