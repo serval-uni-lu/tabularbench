@@ -7,7 +7,7 @@ datatable: true
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 TabularBench: Adversarial robustness benchmark for tabular data
-[Dcoumentation](https://serval-uni-lu.github.io/tabularbench/doc)
+[Documentation](https://serval-uni-lu.github.io/tabularbench/doc)
 
 ## Leaderboard
 
