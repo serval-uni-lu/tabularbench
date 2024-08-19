@@ -11,7 +11,7 @@ TabularBench: Adversarial robustness benchmark for tabular data
 
 ## MOEVA attack
 
-You are currently viewing results for MOEVA attack. [View all attacks](../).
+You are currently viewing results for MOEVA attack. [View leaderboard](https://serval-uni-lu.github.io/tabularbench).
 
 ### CTU
 
