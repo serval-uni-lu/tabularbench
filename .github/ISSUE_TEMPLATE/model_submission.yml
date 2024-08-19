@@ -37,9 +37,11 @@ body:
     
     * Robust accuracy:
     
+    * Robust accuracy under adaptive attacks:
+    
     * Additional data: true/false
     
-    * Evaluation method:
+    * Evaluation method: [CAA/Other...]
     
     * Checkpoint and code: (insert here the URL for the checkpoint and the code. If you don't want
     to share your checkpoint publicly, you can share it for a private submission via an email
