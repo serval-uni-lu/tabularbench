@@ -1,0 +1,19 @@
+.container-lg {
+    max-width: 1400px; /* Adjust this value as needed */
+    width: 100%;
+}
+
+.markdown-body h1 {
+    font-variant: small-caps;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 4em;
+}
+
+.markdown-body h2 {
+    font-size: 2em;
+}
+
+.markdown-body h3 {
+    font-size: 1.5em;
+}
