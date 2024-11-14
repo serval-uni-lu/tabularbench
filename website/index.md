@@ -24,23 +24,23 @@ Jump to dataset:
 
 ### CTU
 
-{% include_relative data/ctu.md %}
+{% include_relative tables/ctu.md %}
 
 ### LCLD
 
-{% include_relative data/lcld.md %}
+{% include_relative tables/lcld.md %}
 
 ### Malware
 
-{% include_relative data/malware.md %}
+{% include_relative tables/malware.md %}
 
 ### URL
 
-{% include_relative data/url.md %}
+{% include_relative tables/url.md %}
 
 ### WIDS
 
-{% include_relative data/wids.md %}
+{% include_relative tables/wids.md %}
 
 <script>
     var table = $('table').DataTable(
