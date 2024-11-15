@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="real" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 249.53 314.51">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke: #333;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+
+      .cls-3 {
+        fill: #5583b2;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-4 {
+        fill: #74b2f2;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-5 {
+        fill: #65c8d0;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="124.77" height="314.51"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="124.77" y="0" width="124.77" height="314.51"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="28.87" y="33.18" width="97.27" height="246.55"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <rect class="cls-1" x="126.14" y="33.18" width="97.27" height="246.55"/>
+    </clipPath>
+  </defs>
+  <g>
+    <g id="_Mirror_Repeat_" data-name="&amp;lt;Mirror Repeat&amp;gt;">
+      <g class="cls-9">
+        <path class="cls-2" d="M126.84,4.67L5,51.53v122.46c.07,5.73.72,14.07,3.49,23.65,3.52,12.19,8.74,20.39,14.05,28.6,5.33,8.23,13.64,19.47,26,31.17,10.22,9.98,23.52,21.33,40.22,32.14,13.7,8.88,26.72,15.46,38.08,20.37"/>
+      </g>
+    </g>
+    <g id="_Mirror_Repeat_-2" data-name="&amp;lt;Mirror Repeat&amp;gt;">
+      <g class="cls-6">
+        <path class="cls-2" d="M122.69,4.67l121.84,46.86v122.46c-.07,5.73-.72,14.07-3.49,23.65-3.52,12.19-8.74,20.39-14.05,28.6-5.33,8.23-13.64,19.47-26,31.17-10.22,9.98-23.52,21.33-40.22,32.14-13.7,8.88-26.72,15.46-38.08,20.37"/>
+      </g>
+    </g>
+  </g>
+  <g class="cls-8">
+    <path class="cls-3" d="M126.34,272.12c-8.63-3.73-18.5-8.73-28.9-15.46-12.67-8.21-22.77-16.82-30.52-24.39-9.38-8.88-15.69-17.41-19.74-23.65-4.03-6.23-7.99-12.45-10.67-21.7-2.1-7.27-2.59-13.6-2.65-17.95v-92.94l92.47-35.56v231.66Z"/>
+    <line class="cls-5" x1="73.47" y1="60.79" x2="73.47" y2="238.38"/>
+    <line class="cls-5" x1="33.87" y1="114.54" x2="124.77" y2="95.24"/>
+    <line class="cls-5" x1="33.87" y1="157.25" x2="124.77" y2="151.56"/>
+    <line class="cls-5" x1="44.03" y1="203.62" x2="126.34" y2="205.26"/>
+  </g>
+  <g class="cls-7">
+    <path class="cls-4" d="M125.93,272.12c8.63-3.73,18.5-8.73,28.9-15.46,12.67-8.21,22.77-16.82,30.52-24.39,9.38-8.88,15.69-17.41,19.74-23.65,4.03-6.23,7.99-12.45,10.67-21.7,2.1-7.27,2.59-13.6,2.65-17.95v-92.94l-92.47-35.56v231.66Z"/>
+    <line class="cls-5" x1="178.8" y1="60.79" x2="178.8" y2="238.38"/>
+    <line class="cls-5" x1="218.4" y1="114.54" x2="127.51" y2="95.24"/>
+    <line class="cls-5" x1="218.4" y1="157.25" x2="127.51" y2="151.56"/>
+    <line class="cls-5" x1="208.25" y1="203.62" x2="125.93" y2="205.26"/>
+  </g>
+</svg>

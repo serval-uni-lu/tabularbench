@@ -1,0 +1,35 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+h1::before {
+    content: ""; /* Empty content since we're using a background image */
+    display: inline-block;
+    background-image: url("/assets/images/logo.png");
+    background-size: contain; /* Ensures the image fits within the set dimensions */
+    background-repeat: no-repeat; /* Prevents repeating the image */
+    width: 1.5em; /* Set the desired width */
+    height: 1.5em; /* Set the desired height */
+    vertical-align: middle; /* Aligns with the middle of the text */
+}
+
+.container-lg {
+    max-width: 1400px; /* Adjust this value as needed */
+    width: 100%;
+}
+
+.markdown-body h1 {
+    font-variant: small-caps;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 4em;
+}
+
+.markdown-body h2 {
+    font-size: 2em;
+}
+
+.markdown-body h3 {
+    font-size: 1.5em;
+}
