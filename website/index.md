@@ -55,4 +55,28 @@ Jump to dataset:
         }
     );
     table.columns.adjust().draw();
+
+    $(document).ready(function () {
+        function updateFilterMargins() {
+            $('.dataTables_wrapper').each(function () {
+                var $wrapper = $(this);
+                var $dataTable = $wrapper.find('.dataTable'); // Find the dataTable within the wrapper
+                var $filter = $wrapper.find('.dataTables_filter'); // Find the filter within the wrapper
+                if ($dataTable.length && $filter.length) {
+                    // Get the computed right margin of the dataTable
+                    var tableMarginRight = parseFloat($dataTable.css('margin-right')) || 0;
+                    // Apply the same margin to the filter
+                    $filter.css('margin-right', tableMarginRight);
+                }
+            });
+        }
+
+        // Update margins initially
+        updateFilterMargins();
+
+        // Listen for resize events on the window to update margins dynamically
+        $(window).on('resize', function () {
+            updateFilterMargins();
+        });
+    });
 </script>
