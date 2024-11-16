@@ -26,21 +26,31 @@ Jump to dataset:
 
 ### CTU
 
+<a href="#">^ back to top</a>
+
 {% include_relative tables/ctu.md %}
 
 ### LCLD
+
+<a href="#">^ back to top</a>
 
 {% include_relative tables/lcld.md %}
 
 ### Malware
 
+<a href="#">^ back to top</a>
+
 {% include_relative tables/malware.md %}
 
 ### URL
 
+<a href="#">^ back to top</a>
+
 {% include_relative tables/url.md %}
 
 ### WIDS
+
+<a href="#">^ back to top</a>
 
 {% include_relative tables/wids.md %}
 
