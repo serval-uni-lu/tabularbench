@@ -26,6 +26,10 @@ h1::before {
     font-size: 4em;
 }
 
+.markdown-body h1 a:hover {
+    text-decoration: none;
+}
+
 .markdown-body h2 {
     font-size: 2em;
 }
