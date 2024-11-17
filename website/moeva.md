@@ -1,10 +1,11 @@
 ---
 datatable: true
 ---
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
 
 TabularBench: Adversarial robustness benchmark for tabular data.
 
@@ -14,29 +15,39 @@ TabularBench: Adversarial robustness benchmark for tabular data.
 
 You are currently viewing results for MOEVA attack. [View leaderboard](https://serval-uni-lu.github.io/tabularbench).
 
+Among models that demonstrate strong robustness to constrained adversarial attacks (high ADV+CTR), we observe that some achieve this robustness solely by consistently predicting the "1" class.
+This behavior is evident in their poor accuracy and precision.
+Therefore, we **rank** models based on their average performance across clean accuracy (Accuracy) and constrained adversarial accuracy (ADV+CTR).
 Jump to dataset:
 
 - [CTU](#ctu)
 - [LCLD](#lcld)
-- [Malware](#malware)
 - [URL](#url)
 - [WIDS](#wids)
 
 ### CTU
 
-{% include_relative moeva/ctu.md %}
+<a href="#">^ back to top</a>
+
+{% include_relative tables/moeva/ctu_new.md %}
 
 ### LCLD
 
-{% include_relative moeva/lcld.md %}
+<a href="#">^ back to top</a>
+
+{% include_relative tables/moeva/lcld_new.md %}
 
 ### URL
 
-{% include_relative moeva/url.md %}
+<a href="#">^ back to top</a>
+
+{% include_relative tables/moeva/url_new.md %}
 
 ### WIDS
 
-{% include_relative moeva/wids.md %}
+<a href="#">^ back to top</a>
+
+{% include_relative tables/moeva/wids_new.md %}
 
 <script>
     var table = $('table').DataTable(
@@ -49,4 +60,28 @@ Jump to dataset:
         }
     );
     table.columns.adjust().draw();
+
+    $(document).ready(function () {
+        function updateFilterMargins() {
+            $('.dataTables_wrapper').each(function () {
+                var $wrapper = $(this);
+                var $dataTable = $wrapper.find('.dataTable'); // Find the dataTable within the wrapper
+                var $filter = $wrapper.find('.dataTables_filter'); // Find the filter within the wrapper
+                if ($dataTable.length && $filter.length) {
+                    // Get the computed right margin of the dataTable
+                    var tableMarginRight = parseFloat($dataTable.css('margin-right')) || 0;
+                    // Apply the same margin to the filter
+                    $filter.css('margin-right', tableMarginRight);
+                }
+            });
+        }
+
+        // Update margins initially
+        updateFilterMargins();
+
+        // Listen for resize events on the window to update margins dynamically
+        $(window).on('resize', function () {
+            updateFilterMargins();
+        });
+    });
 </script>
