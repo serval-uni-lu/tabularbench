@@ -16,6 +16,10 @@ TabularBench: Adversarial robustness benchmark for tabular data.
 
 You are currently viewing results of the leaderboard. View MOEVA attack results [here](moeva).
 
+Among models that demonstrate strong robustness to constrained adversarial attacks (high ADV+CTR), we observe that some achieve this robustness solely by consistently predicting the "1" class.
+This behavior is evident in their poor accuracy and precision.
+Therefore, we **rank** models based on their average performance across clean accuracy (Accuracy) and constrained adversarial accuracy (ADV+CTR).
+
 Jump to dataset:
 
 - [CTU](#ctu)
@@ -28,31 +32,31 @@ Jump to dataset:
 
 <a href="#">^ back to top</a>
 
-{% include_relative tables/ctu.md %}
+{% include_relative tables/ctu_new.md %}
 
 ### LCLD
 
 <a href="#">^ back to top</a>
 
-{% include_relative tables/lcld.md %}
+{% include_relative tables/lcld_new.md %}
 
 ### Malware
 
 <a href="#">^ back to top</a>
 
-{% include_relative tables/malware.md %}
+{% include_relative tables/malware_new.md %}
 
 ### URL
 
 <a href="#">^ back to top</a>
 
-{% include_relative tables/url.md %}
+{% include_relative tables/url_new.md %}
 
 ### WIDS
 
 <a href="#">^ back to top</a>
 
-{% include_relative tables/wids.md %}
+{% include_relative tables/wids_new.md %}
 
 <script>
     var table = $('table').DataTable(
