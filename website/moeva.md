@@ -18,6 +18,7 @@ You are currently viewing results for MOEVA attack. [View leaderboard](https://s
 Among models that demonstrate strong robustness to constrained adversarial attacks (high ADV+CTR), we observe that some achieve this robustness solely by consistently predicting the "1" class.
 This behavior is evident in their poor accuracy and precision.
 Therefore, we **rank** models based on their average performance across clean accuracy (Accuracy) and constrained adversarial accuracy (ADV+CTR).
+
 Jump to dataset:
 
 - [CTU](#ctu)
