@@ -6,7 +6,7 @@
 h1::before {
     content: ""; /* Empty content since we're using a background image */
     display: inline-block;
-    background-image: url("/assets/images/logo.png");
+    background-image: url("/tabularbench/assets/images/logo.png");
     background-size: contain; /* Ensures the image fits within the set dimensions */
     background-repeat: no-repeat; /* Prevents repeating the image */
     width: 1.5em; /* Set the desired width */
