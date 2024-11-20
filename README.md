@@ -128,7 +128,7 @@ The folder structure on the Shared folder should be followed locally to ensure t
 
 **Datasets**: Datasets are downloaded automatically in `data/datasets` when used.
 
-**Models** (HuggingFace): Models are now downloaded automatically as needed when running the benchmark. Only the required model for a specific setting will be downloaded. Pretrained models remain available in the data/models folder on OneDrive.
+**Models** (HuggingFace): Models are now downloaded automatically as needed when running the benchmark. Only the required model for a specific setting will be downloaded. Pretrained models remain available in the `data/models` folder on OneDrive.
 
 **Model parameters**: Optimal parameters (from hyperparameters search) are required to train models and are in `data/model_parameters`.
 
