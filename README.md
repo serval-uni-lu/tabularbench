@@ -123,9 +123,12 @@ Edit the `tasks/train_model.py` file to change the model, dataset, and training 
 Datasets, pretrained models, and synthetic data are publicly available [here](https://uniluxembourg-my.sharepoint.com/:f:/g/personal/thibault_simonetto_uni_lu/EvkG4BI0EqJFu436biA2C_sBpkEKTTjA5PgZU_Z9jwNNSA?e=62a4Dm).
 The folder structure on the Shared folder should be followed locally to ensure the code runs correctly.
 
+> [!NOTE]
+> We are transitioning to Hugging Face for data storage. The model's data is now available on Huggin Face [here](https://huggingface.co/serval-uni-lu/tabularbench/tree/main).
+
 **Datasets**: Datasets are downloaded automatically in `data/datasets` when used.
 
-**Models**: Pretrained models are available in the folder `data/models`.
+**Models** (HuggingFace): Models are now downloaded automatically as needed when running the benchmark. Only the required model for a specific setting will be downloaded. Pretrained models remain available in the data/models folder on OneDrive.
 
 **Model parameters**: Optimal parameters (from hyperparameters search) are required to train models and are in `data/model_parameters`.
 
