@@ -5,6 +5,7 @@ from tabularbench.models.aliases import ALIASES as ARCH_ALIASES
 from tabularbench.models.model import Model
 from tabularbench.models.model_factory import load_model
 from tabularbench.models.tab_scaler import TabScaler
+from tabularbench.utils.huggingface import hf_hub_download_folder
 
 
 def load_model_and_weights(
@@ -21,7 +22,11 @@ def load_model_and_weights(
     model_arch = ARCH_ALIASES.get(model_arch, model_arch)
     training_name = TRAINING_ALIASES.get(training_name, training_name)
 
-    weight_path = f"./data/models/{dataset_name}/{model_arch}_{dataset_name}_{training_name}.model"
+    weight_path = hf_hub_download_folder(
+        "serval-uni-lu/tabularbench/"
+        f"{dataset_name}/"
+        f"{model_arch}_{dataset_name}_{training_name}.model"
+    )
 
     force_device = device if device != "" else None
     model = model_class.load_class(
