@@ -13,6 +13,36 @@ TabularBench: Adversarial robustness benchmark for tabular data
 - CAPGD attack: [Towards Adaptive Attacks on Constrained Tabular Machine Learning](https://openreview.net/forum?id=DnvYdmR9OB)
 - MOEVA attack: [A Unified Framework for Adversarial Attack and Defense in Constrained Feature Space](https://arxiv.org/abs/2112.01156)
 
+**How to cite**:
+
+Would you like to reference the CAA attack?
+
+Then consider citing our paper, to appear in NeurIPS 2024 (spotlight):
+
+```bibtex
+@misc{simonetto2024caa,
+    title={Constrained Adaptive Attack: Effective Adversarial Attack Against Deep Neural Networks for Tabular Data},
+    author={Thibault Simonetto and Salah Ghamizi and Maxime Cordy},
+    booktitle={To appear in Advances in Neural Information Processing Systems},
+    year={2024},
+    url={https://arxiv.org/abs/2406.00775},
+}
+```
+
+Would you like to reference the benchmark, the leaderboard or the model zoo?
+
+Then consider citing our paper, to appear in NeurIPS 2024 Datasets and Benchmarks:
+
+```bibtex
+@misc{simonetto2024tabularbench,
+    title={TabularBench: Benchmarking Adversarial Robustness for Tabular Deep Learning in Real-world Use-cases},
+    author={Thibault Simonetto and Salah Ghamizi and Maxime Cordy},
+    booktitle={To appear in Advances in Neural Information Processing Systems},
+    year={2024},
+    url={https://arxiv.org/abs/2408.07579},
+}
+```
+
 ## Installation
 
 ### Using Docker (recommended)
